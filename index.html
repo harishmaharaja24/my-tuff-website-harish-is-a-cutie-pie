@@ -1,1 +1,506 @@
 
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harish's Fire Site - All About Me</title>
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: #121b2f;
+      --panel2:#0f172a;
+      --text: #e7eefc;
+      --muted:#b8c4dd;
+      --accent:#3b82f6;
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1050px;
+      font-synthesis-weight: none;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 30% -10%, rgba(59,130,246,.35), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(16,185,129,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      min-height:100vh;
+    }
+    /* Sidebar */
+    aside{
+      padding:18px;
+      border-right:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(18,27,47,.92), rgba(15,23,42,.92));
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:auto;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:10px 10px 14px;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:12px;
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.9), rgba(59,130,246,.2)),
+        url("https://lh3.googleusercontent.com/sitesv/APaQ0SQnU3T3pZhTRXr6wYolY4NYGkV0FI--HhVSh2byYjNuYH0hjxNQKjzrM9NZAGeMDeF4TOa56PQl_RXtQRjK3QuX9fARPWqO-dKMzQuOjfNGrBmrbcXIjl43eEhHpZaMUXOwAbfFxVB3j-qismQrwZvzOT8YA2NzCvKMAJoxL2_gcit1FOISfDVtiL8%3Dw16383") center/cover;
+      box-shadow: var(--shadow);
+      border:1px solid var(--line);
+    }
+    .brand h2{
+      margin:0;
+      font-size:15px;
+      letter-spacing:.2px;
+    }
+    .brand p{
+      margin:2px 0 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .search{
+      margin:10px 8px 14px;
+      display:flex;
+      gap:8px;
+      padding:10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+    }
+    .search input{
+      width:100%;
+      border:0;
+      outline:none;
+      background:transparent;
+      color:var(--text);
+      font-size:13px;
+    }
+    nav{
+      margin-top:10px;
+      padding:0 6px 18px;
+    }
+    .nav-title{
+      font-size:12px;
+      color:var(--muted);
+      margin:14px 8px 8px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .nav-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      margin:6px 0;
+      border-radius: 12px;
+      border:1px solid transparent;
+      transition: .15s ease;
+      cursor:pointer;
+    }
+    .nav-item:hover{
+      background: rgba(255,255,255,.06);
+      border-color: var(--line);
+    }
+    .nav-item.active{
+      background: rgba(59,130,246,.16);
+      border-color: rgba(59,130,246,.35);
+    }
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:999px;
+      background: rgba(255,255,255,.25);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.06);
+      flex: 0 0 auto;
+    }
+    .nav-item.active .dot{
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59,130,246,.18);
+    }
+    .nav-label{
+      font-size:14px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .caret{
+      width:10px; height:10px;
+      border-right:2px solid rgba(255,255,255,.55);
+      border-bottom:2px solid rgba(255,255,255,.55);
+      transform: rotate(45deg);
+      opacity:.8;
+    }
+    .sub{
+      margin:6px 0 10px 16px;
+      padding-left:8px;
+      border-left:1px dashed var(--line);
+      display:none;
+    }
+    .sub a{
+      display:block;
+      padding:8px 12px;
+      margin:6px 0;
+      border-radius: 12px;
+      color: var(--muted);
+      border:1px solid transparent;
+    }
+    .sub a:hover{
+      background: rgba(255,255,255,.05);
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .footer-note{
+      margin:16px 8px 0;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+    }
+
+    /* Main */
+    main{
+      padding:22px 18px 60px;
+    }
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    header.top{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      padding: 8px 6px 18px;
+      border-bottom:1px solid var(--line);
+    }
+    header.top h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:.2px;
+    }
+    header.top .subtitle{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size:14px;
+    }
+    .pill{
+      padding:10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      color: var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    .card{
+      margin-top:18px;
+      padding:18px;
+      background: rgba(18,27,47,.78);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .lead{
+      font-size:16px;
+      margin:0;
+      color: var(--text);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+    .info{
+      padding:12px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+    }
+    .info .k{
+      font-size:12px;
+      color: var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .info .v{
+      margin-top:6px;
+      font-size:15px;
+      font-weight:600;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin: 22px 0 10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:18px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    .imgbox{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      aspect-ratio: 1 / 1;
+    }
+    .imgbox img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .caption{
+      margin:12px 0 0;
+      color: var(--muted);
+      font-size:13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .wrap{grid-template-columns: 1fr}
+      aside{position:relative; height:auto; border-right:0; border-bottom:1px solid var(--line)}
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      header.top{flex-direction:column; align-items:flex-start}
+      .pill{width:fit-content}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <aside>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h2>Harish's Google Site!!!</h2>
+          <p>All About Me</p>
+        </div>
+      </div>
+
+      <div class="search" role="search">
+        <input id="searchInput" type="search" placeholder="Search this site" aria-label="Search this site">
+      </div>
+
+      <nav aria-label="Site navigation">
+        <div class="nav-title">Navigation</div>
+
+        <a class="nav-item" href="#home">
+          <div class="nav-left">
+            <span class="dot"></span>
+            <span class="nav-label">Home</span>
+          </div>
+        </a>
+
+        <div class="nav-item active" id="aboutToggle" tabindex="0" role="button" aria-expanded="true" aria-controls="aboutSub">
+          <div class="nav-left">
+            <span class="dot"></span>
+            <span class="nav-label">All About Me!!!</span>
+          </div>
+          <span class="caret" aria-hidden="true"></span>
+        </div>
+
+        <div class="sub" id="aboutSub">
+          <a href="#music">Favorite Music!!!</a>
+          <a href="#vacation">Dream Vacation!!!</a>
+          <a href="#hobbies">Hobbies!!!</a>
+        </div>
+
+        <div class="footer-note">Made as a simple HTML version of your Google Sites page.</div>
+      </nav>
+    </aside>
+
+    <main>
+      <div class="container">
+        <header class="top" id="home">
+          <div>
+            <h1>Harish's Fire Site</h1>
+            <p class="subtitle">Feel free to look around my site :)</p>
+          </div>
+          <div class="pill">Single-page HTML • Easy to edit</div>
+        </header>
+
+        <section class="card" id="about">
+          <p class="lead">My name is Harish, and here are some things about me!</p>
+
+          <div class="grid">
+            <div class="info">
+              <div class="k">Name</div>
+              <div class="v">Harish</div>
+            </div>
+            <div class="info">
+              <div class="k">Fav Color</div>
+              <div class="v">Blue</div>
+            </div>
+
+            <div class="info">
+              <div class="k">Age</div>
+              <div class="v">14</div>
+            </div>
+            <div class="info">
+              <div class="k">Nationality</div>
+              <div class="v">Indian</div>
+            </div>
+
+            <div class="info">
+              <div class="k">Country</div>
+              <div class="v">Canada</div>
+            </div>
+            <div class="info">
+              <div class="k">Fav Food</div>
+              <div class="v">Indian Food / Curry</div>
+            </div>
+
+            <div class="info" style="grid-column: 1 / -1;">
+              <div class="k">Extra</div>
+              <div class="v">Loves Cars!!!</div>
+            </div>
+          </div>
+
+          <div class="section-title">
+            <h2>Pictures</h2>
+          </div>
+
+          <div class="gallery">
+            <div class="imgbox">
+              <img alt="Canada and India flags" src="https://lh3.googleusercontent.com/sitesv/APaQ0SRCT-yvZuHbFy8rwX4x_AmiL-CSI4wL4kPBjepiQxQxqR8dmzs8DCBo-PpP2EEoCc5PCoh8uoV3Kpr7riqnRnmro8WYOWhpWJZVZAe8B0GXzl2b56xh3Z3j0FVskeEVoi8_Z2rjcdaRG89erRU6IzqivXQGxXQU48SYnVD8ots4382wQPnMMprhOP8%3Dw1280">
+            </div>
+            <div class="imgbox">
+              <img alt="Orange sports car" src="https://lh3.googleusercontent.com/sitesv/APaQ0SR_wrNtATZ9EHY3PlVs7PBTukVQZpj3ttuVgvUZYEbvzb_O8CcdLw6IoPFJVmyhELvGmwGh7khrgTfo5WYEB0gndnotwAfgSi8gj2bhoOWMcTil878PlxbqMkZor4zaiLtvpoWW1fsbL-GQTbVRuWB6FaAocvT5MPqJZyzR9OWcL9zlOtnwgvgxze1EzE2QFG3XhIRlp4kn_jOfZhTUvpeo2DUfrZ8jfAczKuk%3Dw1280">
+            </div>
+            <div class="imgbox">
+              <img alt="Canada and India flags (alt)" src="https://lh3.googleusercontent.com/sitesv/APaQ0SQcEuuLn9rGa2vrsLnckyZwJWn4MPv4bZlWVlIjMZd1ioLzdPlsKNiAWWpFgSeDYLH8Q6lkGX7ZayfrcsZ6PRf-07aH4w9r0PTh8naLYNmRfehk2cC_F_HbivyTaZnZVFMrXCdxPG1nyxHgmKhyB8DBwDPQRqkmVqWhLCyP1rIpPvvNfkbeS-R3KKs%3Dw1280">
+            </div>
+          </div>
+
+          <p class="caption">^^^This is my whole personality in like 2.5 images!^^^</p>
+        </section>
+
+        <!-- Extra sections so the nav links work (edit these however you want) -->
+        <section class="card" id="music">
+          <div class="section-title"><h2>Favorite Music!!!</h2></div>
+          <p class="caption">Add your favorite artists/songs here.</p>
+        </section>
+
+        <section class="card" id="vacation">
+          <div class="section-title"><h2>Dream Vacation!!!</h2></div>
+          <p class="caption">Add your dream vacation place + why you want to go.</p>
+        </section>
+
+        <section class="card" id="hobbies">
+          <div class="section-title"><h2>Hobbies!!!</h2></div>
+          <p class="caption">Add your hobbies here (cars, games, sports, cadets, etc.).</p>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Simple dropdown for "All About Me!!!"
+    const toggle = document.getElementById("aboutToggle");
+    const sub = document.getElementById("aboutSub");
+    const search = document.getElementById("searchInput");
+
+    function setExpanded(expanded){
+      toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+      sub.style.display = expanded ? "block" : "none";
+    }
+    setExpanded(true);
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      setExpanded(!expanded);
+    });
+    toggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle.click();
+      }
+    });
+
+    // Tiny "search" that highlights matching text on the page (simple + optional)
+    let lastMark = null;
+    function clearMark(){
+      if (!lastMark) return;
+      lastMark.forEach(node => {
+        const parent = node.parentNode;
+        parent.replaceChild(document.createTextNode(node.textContent), node);
+        parent.normalize();
+      });
+      lastMark = null;
+    }
+
+    search.addEventListener("input", () => {
+      clearMark();
+      const q = search.value.trim().toLowerCase();
+      if (!q) return;
+
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node){
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          // skip sidebar search box text nodes, scripts, styles
+          const p = node.parentElement;
+          if (!p) return NodeFilter.FILTER_REJECT;
+          const tag = p.tagName.toLowerCase();
+          if (["script","style","input"].includes(tag)) return NodeFilter.FILTER_REJECT;
+          return node.nodeValue.toLowerCase().includes(q) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+
+      lastMark = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const text = node.nodeValue;
+        const idx = text.toLowerCase().indexOf(q);
+        if (idx === -1) continue;
+
+        const before = document.createTextNode(text.slice(0, idx));
+        const match = document.createElement("mark");
+        match.textContent = text.slice(idx, idx + q.length);
+        match.style.background = "rgba(59,130,246,.35)";
+        match.style.color = "inherit";
+        match.style.padding = "0 2px";
+        match.style.borderRadius = "6px";
+        const after = document.createTextNode(text.slice(idx + q.length));
+
+        const frag = document.createDocumentFragment();
+        frag.appendChild(before);
+        frag.appendChild(match);
+        frag.appendChild(after);
+
+        node.parentNode.replaceChild(frag, node);
+        lastMark.push(match);
+      }
+      if (lastMark && lastMark.length) lastMark[0].scrollIntoView({behavior:"smooth", block:"center"});
+    });
+  </script>
+</body>
+</html>
