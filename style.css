@@ -1,0 +1,33 @@
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#0b1220;
+  color:white;
+  text-align:center;
+}
+
+.card{
+  background:#16203a;
+  padding:20px;
+  margin:20px auto;
+  width:90%;
+  max-width:600px;
+  border-radius:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.box{
+  background:#1f2a4d;
+  padding:10px;
+  border-radius:8px;
+}
+
+img{
+  width:100%;
+  border-radius:10px;
+}
