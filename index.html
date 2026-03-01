@@ -1,208 +1,113 @@
-
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harish's Fire Site - All About Me</title>
+  <title>Harish's Fire Site — All About Me!!!</title>
+
+  <!--
+    EASY RUN:
+    1) Save this as index.html
+    2) Open it in VS Code
+    3) Right click -> "Open with Live Server" (or just double-click the file)
+  -->
+
   <style>
     :root{
-      --bg: #0b1220;
-      --panel: #121b2f;
-      --panel2:#0f172a;
-      --text: #e7eefc;
-      --muted:#b8c4dd;
-      --accent:#3b82f6;
-      --line: rgba(255,255,255,.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
-      --max: 1050px;
-      font-synthesis-weight: none;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 30% -10%, rgba(59,130,246,.35), transparent 60%),
-                  radial-gradient(900px 500px at 90% 20%, rgba(16,185,129,.18), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{
-      display:grid;
-      grid-template-columns: 280px 1fr;
-      min-height:100vh;
-    }
-    /* Sidebar */
-    aside{
-      padding:18px;
-      border-right:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(18,27,47,.92), rgba(15,23,42,.92));
-      position:sticky;
-      top:0;
-      height:100vh;
-      overflow:auto;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:10px 10px 14px;
-    }
-    .logo{
-      width:44px; height:44px; border-radius:12px;
-      background:
-        linear-gradient(135deg, rgba(59,130,246,.9), rgba(59,130,246,.2)),
-        url("https://lh3.googleusercontent.com/sitesv/APaQ0SQnU3T3pZhTRXr6wYolY4NYGkV0FI--HhVSh2byYjNuYH0hjxNQKjzrM9NZAGeMDeF4TOa56PQl_RXtQRjK3QuX9fARPWqO-dKMzQuOjfNGrBmrbcXIjl43eEhHpZaMUXOwAbfFxVB3j-qismQrwZvzOT8YA2NzCvKMAJoxL2_gcit1FOISfDVtiL8%3Dw16383") center/cover;
-      box-shadow: var(--shadow);
-      border:1px solid var(--line);
-    }
-    .brand h2{
-      margin:0;
-      font-size:15px;
-      letter-spacing:.2px;
-    }
-    .brand p{
-      margin:2px 0 0;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .search{
-      margin:10px 8px 14px;
-      display:flex;
-      gap:8px;
-      padding:10px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border:1px solid var(--line);
-    }
-    .search input{
-      width:100%;
-      border:0;
-      outline:none;
-      background:transparent;
-      color:var(--text);
-      font-size:13px;
-    }
-    nav{
-      margin-top:10px;
-      padding:0 6px 18px;
-    }
-    .nav-title{
-      font-size:12px;
-      color:var(--muted);
-      margin:14px 8px 8px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-    }
-    .nav-item{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      margin:6px 0;
-      border-radius: 12px;
-      border:1px solid transparent;
-      transition: .15s ease;
-      cursor:pointer;
-    }
-    .nav-item:hover{
-      background: rgba(255,255,255,.06);
-      border-color: var(--line);
-    }
-    .nav-item.active{
-      background: rgba(59,130,246,.16);
-      border-color: rgba(59,130,246,.35);
-    }
-    .nav-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-    .dot{
-      width:9px; height:9px; border-radius:999px;
-      background: rgba(255,255,255,.25);
-      box-shadow: 0 0 0 3px rgba(255,255,255,.06);
-      flex: 0 0 auto;
-    }
-    .nav-item.active .dot{
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(59,130,246,.18);
-    }
-    .nav-label{
-      font-size:14px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .caret{
-      width:10px; height:10px;
-      border-right:2px solid rgba(255,255,255,.55);
-      border-bottom:2px solid rgba(255,255,255,.55);
-      transform: rotate(45deg);
-      opacity:.8;
-    }
-    .sub{
-      margin:6px 0 10px 16px;
-      padding-left:8px;
-      border-left:1px dashed var(--line);
-      display:none;
-    }
-    .sub a{
-      display:block;
-      padding:8px 12px;
-      margin:6px 0;
-      border-radius: 12px;
-      color: var(--muted);
-      border:1px solid transparent;
-    }
-    .sub a:hover{
-      background: rgba(255,255,255,.05);
-      border-color: var(--line);
-      color: var(--text);
-    }
-    .footer-note{
-      margin:16px 8px 0;
-      color:rgba(255,255,255,.55);
-      font-size:12px;
+      --bg:#070b16;
+      --panel:rgba(14,20,41,.72);
+      --panel2:rgba(14,20,41,.55);
+      --line:rgba(255,255,255,.10);
+      --text:#eaf1ff;
+      --muted:#b8c6e8;
+      --accent:#4aa3ff;
+      --accent2:#23d3b7;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1100px;
     }
 
-    /* Main */
-    main{
-      padding:22px 18px 60px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      overflow-x:hidden;
     }
+
+    /* Starry background (no image files needed) */
+    .stars{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(74,163,255,.35), transparent 65%),
+        radial-gradient(900px 500px at 95% 20%, rgba(35,211,183,.18), transparent 60%),
+        radial-gradient(700px 420px at 70% 110%, rgba(74,163,255,.12), transparent 60%),
+        linear-gradient(180deg, #070b16 0%, #050814 60%, #040610 100%);
+    }
+    .stars::before, .stars::after{
+      content:"";
+      position:absolute;
+      inset:-200px;
+      background-repeat:repeat;
+      opacity:.55;
+      filter: blur(.2px);
+      background-image:
+        radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,.75) 99%, transparent 100%),
+        radial-gradient(1px 1px at 70px 90px, rgba(255,255,255,.60) 99%, transparent 100%),
+        radial-gradient(1px 1px at 140px 50px, rgba(255,255,255,.55) 99%, transparent 100%),
+        radial-gradient(1px 1px at 220px 120px, rgba(255,255,255,.70) 99%, transparent 100%),
+        radial-gradient(1px 1px at 300px 40px, rgba(255,255,255,.50) 99%, transparent 100%);
+      background-size: 320px 180px;
+      animation: drift 20s linear infinite;
+    }
+    .stars::after{
+      opacity:.35;
+      filter: blur(.6px);
+      background-size: 520px 260px;
+      animation-duration: 34s;
+    }
+    @keyframes drift{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(-220px, 140px, 0)}
+    }
+
+    /* Layout */
     .container{
       max-width: var(--max);
-      margin: 0 auto;
+      margin:0 auto;
+      padding: 24px 16px 64px;
     }
-    header.top{
+
+    header{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
       gap:16px;
-      padding: 8px 6px 18px;
+      padding: 14px 8px 18px;
       border-bottom:1px solid var(--line);
     }
-    header.top h1{
+    .title{
       margin:0;
-      font-size:28px;
-      letter-spacing:.2px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing:.3px;
+      line-height:1.08;
+      text-shadow: 0 0 18px rgba(74,163,255,.35);
     }
-    header.top .subtitle{
-      margin:6px 0 0;
-      color: var(--muted);
-      font-size:14px;
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size: 14px;
     }
-    .pill{
+
+    .chip{
       padding:10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
+      border-radius:999px;
       border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
       color: var(--muted);
       font-size:12px;
       white-space:nowrap;
@@ -210,39 +115,65 @@
 
     .card{
       margin-top:18px;
-      padding:18px;
-      background: rgba(18,27,47,.78);
       border:1px solid var(--line);
       border-radius: var(--radius);
+      background: var(--panel);
       box-shadow: var(--shadow);
+      overflow:hidden;
     }
+    .card-inner{
+      padding:18px;
+    }
+
     .lead{
-      font-size:16px;
       margin:0;
+      font-size: 16px;
       color: var(--text);
     }
-    .grid{
+
+    .facts{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0,1fr));
       gap:12px;
       margin-top:14px;
     }
-    .info{
-      padding:12px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.05);
+    .fact{
       border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding:12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      min-height: 74px;
     }
-    .info .k{
+    .fact svg{flex:0 0 auto}
+    .k{
       font-size:12px;
       color: var(--muted);
       text-transform:uppercase;
       letter-spacing:.12em;
     }
-    .info .v{
-      margin-top:6px;
-      font-size:15px;
-      font-weight:600;
+    .v{
+      margin-top:2px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .fact-wide{
+      grid-column: 1 / -1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 14px;
+      background: linear-gradient(90deg, rgba(74,163,255,.12), rgba(35,211,183,.10));
+    }
+    .fact-wide .v{font-size:16px}
+    .spark{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 6px rgba(35,211,183,.14);
     }
 
     .section-title{
@@ -250,257 +181,333 @@
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      margin: 22px 0 10px;
+      margin-top: 18px;
+      padding-top: 2px;
     }
     .section-title h2{
       margin:0;
-      font-size:18px;
+      font-size: 18px;
+      letter-spacing:.2px;
+    }
+    .section-title span{
+      color:var(--muted);
+      font-size:12px;
     }
 
     .gallery{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap:12px;
+      margin-top:12px;
     }
-    .imgbox{
-      border-radius: 16px;
-      overflow:hidden;
+    .tile{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      overflow:hidden;
       box-shadow: var(--shadow);
+    }
+    .tile .img{
       aspect-ratio: 1 / 1;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(800px 500px at 20% 0%, rgba(74,163,255,.18), transparent 60%),
+                  radial-gradient(600px 450px at 100% 100%, rgba(35,211,183,.12), transparent 60%),
+                  rgba(255,255,255,.03);
     }
-    .imgbox img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .caption{
-      margin:12px 0 0;
-      color: var(--muted);
+    .tile .cap{
+      padding:12px 12px 14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
       font-size:13px;
     }
 
+    footer{
+      margin-top:18px;
+      color: rgba(255,255,255,.55);
+      font-size:12px;
+      text-align:center;
+      padding: 18px 0 0;
+    }
+
     /* Responsive */
-    @media (max-width: 900px){
-      .wrap{grid-template-columns: 1fr}
-      aside{position:relative; height:auto; border-right:0; border-bottom:1px solid var(--line)}
-      .grid{grid-template-columns:1fr}
-      .gallery{grid-template-columns:1fr}
-      header.top{flex-direction:column; align-items:flex-start}
-      .pill{width:fit-content}
+    @media (max-width: 920px){
+      header{flex-direction:column; align-items:flex-start}
+      .facts{grid-template-columns: 1fr}
+      .gallery{grid-template-columns: 1fr}
+      .chip{width:fit-content}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <aside>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h2>Harish's Google Site!!!</h2>
-          <p>All About Me</p>
-        </div>
+  <div class="stars" aria-hidden="true"></div>
+
+  <div class="container">
+    <header>
+      <div>
+        <h1 class="title">Harish's Fire Site</h1>
+        <p class="subtitle">ALL ABOUT ME!!! — welcome to my awesome page ✨</p>
       </div>
+      <div class="chip">By me • Harish</div>
+    </header>
 
-      <div class="search" role="search">
-        <input id="searchInput" type="search" placeholder="Search this site" aria-label="Search this site">
-      </div>
+    <section class="card">
+      <div class="card-inner">
+        <p class="lead">My name is Harish, and here are some things about me!</p>
 
-      <nav aria-label="Site navigation">
-        <div class="nav-title">Navigation</div>
-
-        <a class="nav-item" href="#home">
-          <div class="nav-left">
-            <span class="dot"></span>
-            <span class="nav-label">Home</span>
-          </div>
-        </a>
-
-        <div class="nav-item active" id="aboutToggle" tabindex="0" role="button" aria-expanded="true" aria-controls="aboutSub">
-          <div class="nav-left">
-            <span class="dot"></span>
-            <span class="nav-label">All About Me!!!</span>
-          </div>
-          <span class="caret" aria-hidden="true"></span>
-        </div>
-
-        <div class="sub" id="aboutSub">
-          <a href="#music">Favorite Music!!!</a>
-          <a href="#vacation">Dream Vacation!!!</a>
-          <a href="#hobbies">Hobbies!!!</a>
-        </div>
-
-        <div class="footer-note">Made as a simple HTML version of your Google Sites page.</div>
-      </nav>
-    </aside>
-
-    <main>
-      <div class="container">
-        <header class="top" id="home">
-          <div>
-            <h1>Harish's Fire Site</h1>
-            <p class="subtitle">Feel free to look around my site :)</p>
-          </div>
-          <div class="pill">Single-page HTML • Easy to edit</div>
-        </header>
-
-        <section class="card" id="about">
-          <p class="lead">My name is Harish, and here are some things about me!</p>
-
-          <div class="grid">
-            <div class="info">
+        <div class="facts">
+          <!-- Name -->
+          <div class="fact">
+            <!-- person icon (my SVG) -->
+            <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="48" y2="48">
+                  <stop stop-color="rgba(74,163,255,1)"/>
+                  <stop offset="1" stop-color="rgba(74,163,255,.25)"/>
+                </linearGradient>
+              </defs>
+              <circle cx="24" cy="18" r="9" stroke="url(#g1)" stroke-width="3"/>
+              <path d="M10 41c2.8-8 9-12 14-12s11.2 4 14 12" stroke="url(#g1)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <div>
               <div class="k">Name</div>
               <div class="v">Harish</div>
             </div>
-            <div class="info">
-              <div class="k">Fav Color</div>
-              <div class="v">Blue</div>
-            </div>
+          </div>
 
-            <div class="info">
+          <!-- Age -->
+          <div class="fact">
+            <!-- calendar icon (my SVG) -->
+            <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="48" y2="48">
+                  <stop stop-color="rgba(35,211,183,1)"/>
+                  <stop offset="1" stop-color="rgba(35,211,183,.25)"/>
+                </linearGradient>
+              </defs>
+              <rect x="9" y="12" width="30" height="27" rx="7" stroke="url(#g2)" stroke-width="3"/>
+              <path d="M14 18h20" stroke="url(#g2)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M17 9v8M31 9v8" stroke="url(#g2)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M16 25h8M16 31h12" stroke="url(#g2)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <div>
               <div class="k">Age</div>
               <div class="v">14</div>
             </div>
-            <div class="info">
+          </div>
+
+          <!-- Fav Color -->
+          <div class="fact">
+            <!-- palette icon (my SVG) -->
+            <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 9c-8.3 0-15 6.3-15 14s6.7 16 15 16c3.1 0 5-1.7 5-4 0-1.3-.7-2.6-1.6-3.4-.8-.8-1.4-1.7-1.4-2.9 0-2.1 1.8-3.7 4-3.7h4.2c3.7 0 6.8-3 6.8-6.8C40 15 32.5 9 24 9Z"
+                    stroke="rgba(74,163,255,1)" stroke-width="3" fill="rgba(74,163,255,.10)"/>
+              <circle cx="17" cy="21" r="2" fill="rgba(35,211,183,1)"/>
+              <circle cx="22" cy="18" r="2" fill="rgba(255,255,255,.85)"/>
+              <circle cx="27" cy="19" r="2" fill="rgba(74,163,255,1)"/>
+              <circle cx="19" cy="27" r="2" fill="rgba(255,255,255,.6)"/>
+            </svg>
+            <div>
+              <div class="k">Fav Color</div>
+              <div class="v">Blue</div>
+            </div>
+          </div>
+
+          <!-- Nationality -->
+          <div class="fact">
+            <!-- mini flag icon (my SVG) -->
+            <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="10" y="12" width="28" height="22" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)"/>
+              <path d="M10 19h28" stroke="rgba(255,165,0,.85)" stroke-width="6" stroke-linecap="round"/>
+              <path d="M10 27h28" stroke="rgba(34,197,94,.85)" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="24" cy="23" r="3" stroke="rgba(74,163,255,1)" stroke-width="2"/>
+            </svg>
+            <div>
               <div class="k">Nationality</div>
               <div class="v">Indian</div>
             </div>
+          </div>
 
-            <div class="info">
+          <!-- Country -->
+          <div class="fact">
+            <!-- maple icon (my SVG) -->
+            <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 10l2.2 5.6 5-2.3-1.6 6.1 6 0.5-4.6 4 3.3 5.1-5.9-1.7L24 38l-4-10.7-5.9 1.7 3.3-5.1-4.6-4 6-0.5-1.6-6.1 5 2.3L24 10Z"
+                    fill="rgba(255,80,80,.85)" stroke="rgba(255,80,80,1)" stroke-width="1.5"/>
+            </svg>
+            <div>
               <div class="k">Country</div>
               <div class="v">Canada</div>
             </div>
-            <div class="info">
+          </div>
+
+          <!-- Fav Food -->
+          <div class="fact">
+            <!-- bowl icon (my SVG) -->
+            <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M14 22c0 8 4.7 14 10 14s10-6 10-14H14Z" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.22)" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M16 38h16" stroke="rgba(35,211,183,1)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M20 16c0-3 2-5 4-7M26 16c0-3 2-5 4-7" stroke="rgba(74,163,255,1)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <div>
               <div class="k">Fav Food</div>
               <div class="v">Indian Food / Curry</div>
             </div>
-
-            <div class="info" style="grid-column: 1 / -1;">
-              <div class="k">Extra</div>
-              <div class="v">Loves Cars!!!</div>
-            </div>
           </div>
 
-          <div class="section-title">
-            <h2>Pictures</h2>
+          <!-- Extra -->
+          <div class="fact fact-wide">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <!-- car icon (my SVG) -->
+              <svg width="38" height="38" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <path d="M18 30l6-10c1-2 3-3 5-3h6c2 0 4 1 5 3l6 10" stroke="rgba(74,163,255,1)" stroke-width="3" stroke-linecap="round"/>
+                <path d="M14 30h36c2 0 4 2 4 4v10c0 2-2 4-4 4H14c-2 0-4-2-4-4V34c0-2 2-4 4-4Z"
+                      fill="rgba(74,163,255,.10)" stroke="rgba(255,255,255,.22)" stroke-width="3"/>
+                <circle cx="20" cy="44" r="5" fill="rgba(35,211,183,.25)" stroke="rgba(35,211,183,1)" stroke-width="3"/>
+                <circle cx="44" cy="44" r="5" fill="rgba(35,211,183,.25)" stroke="rgba(35,211,183,1)" stroke-width="3"/>
+                <path d="M22 34h20" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <div class="k">Extra</div>
+                <div class="v">Loves Cars!!!</d
+              </div>
+            </div>
+            <div class="spark" title="🔥"></div>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <h2>My Pictures</h2>
+          <span>(custom SVG “images” — made by me)</span>
+        </div>
+
+        <div class="gallery">
+          <!-- Tile 1: Canada + India -->
+          <div class="tile">
+            <div class="img">
+              <svg width="280" height="280" viewBox="0 0 280 280" aria-label="Canada and India mashup flag illustration">
+                <defs>
+                  <linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="rgba(74,163,255,.20)"/>
+                    <stop offset="1" stop-color="rgba(35,211,183,.12)"/>
+                  </linearGradient>
+                </defs>
+                <rect x="16" y="18" width="248" height="244" rx="26" fill="url(#bgA)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+                <!-- split -->
+                <rect x="28" y="30" width="112" height="220" rx="18" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+                <rect x="140" y="30" width="112" height="220" rx="18" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+
+                <!-- CANADA side -->
+                <rect x="38" y="42" width="92" height="196" rx="14" fill="rgba(255,80,80,.18)" stroke="rgba(255,80,80,.55)"/>
+                <path d="M84 70l7 20 18-9-6 21 22 2-17 14 12 18-21-6-15 38-15-38-21 6 12-18-17-14 22-2-6-21 18 9 7-20Z"
+                      fill="rgba(255,80,80,.92)"/>
+
+                <!-- INDIA side -->
+                <rect x="150" y="42" width="92" height="196" rx="14" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.12)"/>
+                <rect x="150" y="42" width="92" height="65" rx="14" fill="rgba(255,165,0,.22)"/>
+                <rect x="150" y="173" width="92" height="65" rx="14" fill="rgba(34,197,94,.20)"/>
+                <circle cx="196" cy="140" r="20" fill="rgba(74,163,255,.10)" stroke="rgba(74,163,255,.9)" stroke-width="3"/>
+                <path d="M196 120v40M176 140h40" stroke="rgba(74,163,255,.75)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="cap">Canada + India (mashup flag)</div>
           </div>
 
-          <div class="gallery">
-            <div class="imgbox">
-              <img alt="Canada and India flags" src="https://lh3.googleusercontent.com/sitesv/APaQ0SRCT-yvZuHbFy8rwX4x_AmiL-CSI4wL4kPBjepiQxQxqR8dmzs8DCBo-PpP2EEoCc5PCoh8uoV3Kpr7riqnRnmro8WYOWhpWJZVZAe8B0GXzl2b56xh3Z3j0FVskeEVoi8_Z2rjcdaRG89erRU6IzqivXQGxXQU48SYnVD8ots4382wQPnMMprhOP8%3Dw1280">
+          <!-- Tile 2: Orange sports car -->
+          <div class="tile">
+            <div class="img">
+              <svg width="280" height="280" viewBox="0 0 280 280" aria-label="Orange sports car illustration">
+                <defs>
+                  <linearGradient id="carO" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="rgba(255,165,0,.95)"/>
+                    <stop offset="1" stop-color="rgba(255,90,90,.55)"/>
+                  </linearGradient>
+                  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="rgba(74,163,255,.35)"/>
+                    <stop offset="1" stop-color="rgba(255,255,255,.06)"/>
+                  </linearGradient>
+                </defs>
+
+                <rect x="18" y="18" width="244" height="244" rx="26" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+
+                <!-- road glow -->
+                <path d="M40 210c60 18 140 18 200 0" stroke="rgba(35,211,183,.35)" stroke-width="10" stroke-linecap="round"/>
+
+                <!-- car body -->
+                <path d="M65 170h150c10 0 18 8 18 18v10H47v-10c0-10 8-18 18-18Z"
+                      fill="url(#carO)" stroke="rgba(255,255,255,.22)" stroke-width="3"/>
+                <path d="M90 170l18-30c4-7 11-11 19-11h40c8 0 15 4 19 11l18 30"
+                      fill="rgba(255,165,0,.25)" stroke="rgba(255,255,255,.22)" stroke-width="3" stroke-linejoin="round"/>
+
+                <!-- windows -->
+                <path d="M118 142h44c6 0 12 3 15 8l8 13H105l7-13c3-5 8-8 13-8Z"
+                      fill="url(#glass)" stroke="rgba(255,255,255,.20)" stroke-width="2"/>
+
+                <!-- wheels -->
+                <circle cx="95" cy="205" r="18" fill="rgba(0,0,0,.45)" stroke="rgba(35,211,183,.9)" stroke-width="3"/>
+                <circle cx="205" cy="205" r="18" fill="rgba(0,0,0,.45)" stroke="rgba(35,211,183,.9)" stroke-width="3"/>
+                <circle cx="95" cy="205" r="7" fill="rgba(255,255,255,.10)"/>
+                <circle cx="205" cy="205" r="7" fill="rgba(255,255,255,.10)"/>
+
+                <!-- headlights -->
+                <path d="M57 187h22" stroke="rgba(255,255,255,.70)" stroke-width="5" stroke-linecap="round"/>
+                <path d="M201 187h22" stroke="rgba(255,255,255,.70)" stroke-width="5" stroke-linecap="round"/>
+              </svg>
             </div>
-            <div class="imgbox">
-              <img alt="Orange sports car" src="https://lh3.googleusercontent.com/sitesv/APaQ0SR_wrNtATZ9EHY3PlVs7PBTukVQZpj3ttuVgvUZYEbvzb_O8CcdLw6IoPFJVmyhELvGmwGh7khrgTfo5WYEB0gndnotwAfgSi8gj2bhoOWMcTil878PlxbqMkZor4zaiLtvpoWW1fsbL-GQTbVRuWB6FaAocvT5MPqJZyzR9OWcL9zlOtnwgvgxze1EzE2QFG3XhIRlp4kn_jOfZhTUvpeo2DUfrZ8jfAczKuk%3Dw1280">
-            </div>
-            <div class="imgbox">
-              <img alt="Canada and India flags (alt)" src="https://lh3.googleusercontent.com/sitesv/APaQ0SQcEuuLn9rGa2vrsLnckyZwJWn4MPv4bZlWVlIjMZd1ioLzdPlsKNiAWWpFgSeDYLH8Q6lkGX7ZayfrcsZ6PRf-07aH4w9r0PTh8naLYNmRfehk2cC_F_HbivyTaZnZVFMrXCdxPG1nyxHgmKhyB8DBwDPQRqkmVqWhLCyP1rIpPvvNfkbeS-R3KKs%3Dw1280">
-            </div>
+            <div class="cap">Orange sports car (because cars!!!)</div>
           </div>
 
-          <p class="caption">^^^This is my whole personality in like 2.5 images!^^^</p>
-        </section>
+          <!-- Tile 3: Blue sports car -->
+          <div class="tile">
+            <div class="img">
+              <svg width="280" height="280" viewBox="0 0 280 280" aria-label="Blue sports car illustration">
+                <defs>
+                  <linearGradient id="carB" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="rgba(74,163,255,.95)"/>
+                    <stop offset="1" stop-color="rgba(74,163,255,.30)"/>
+                  </linearGradient>
+                  <linearGradient id="glass2" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="rgba(255,255,255,.18)"/>
+                    <stop offset="1" stop-color="rgba(35,211,183,.10)"/>
+                  </linearGradient>
+                </defs>
 
-        <!-- Extra sections so the nav links work (edit these however you want) -->
-        <section class="card" id="music">
-          <div class="section-title"><h2>Favorite Music!!!</h2></div>
-          <p class="caption">Add your favorite artists/songs here.</p>
-        </section>
+                <rect x="18" y="18" width="244" height="244" rx="26" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
 
-        <section class="card" id="vacation">
-          <div class="section-title"><h2>Dream Vacation!!!</h2></div>
-          <p class="caption">Add your dream vacation place + why you want to go.</p>
-        </section>
+                <!-- road glow -->
+                <path d="M40 210c60 18 140 18 200 0" stroke="rgba(74,163,255,.25)" stroke-width="10" stroke-linecap="round"/>
 
-        <section class="card" id="hobbies">
-          <div class="section-title"><h2>Hobbies!!!</h2></div>
-          <p class="caption">Add your hobbies here (cars, games, sports, cadets, etc.).</p>
-        </section>
+                <!-- car body -->
+                <path d="M65 170h150c10 0 18 8 18 18v10H47v-10c0-10 8-18 18-18Z"
+                      fill="url(#carB)" stroke="rgba(255,255,255,.22)" stroke-width="3"/>
+                <path d="M90 170l18-30c4-7 11-11 19-11h40c8 0 15 4 19 11l18 30"
+                      fill="rgba(74,163,255,.18)" stroke="rgba(255,255,255,.22)" stroke-width="3" stroke-linejoin="round"/>
 
+                <!-- windows -->
+                <path d="M118 142h44c6 0 12 3 15 8l8 13H105l7-13c3-5 8-8 13-8Z"
+                      fill="url(#glass2)" stroke="rgba(255,255,255,.20)" stroke-width="2"/>
+
+                <!-- wheels -->
+                <circle cx="95" cy="205" r="18" fill="rgba(0,0,0,.45)" stroke="rgba(74,163,255,.95)" stroke-width="3"/>
+                <circle cx="205" cy="205" r="18" fill="rgba(0,0,0,.45)" stroke="rgba(74,163,255,.95)" stroke-width="3"/>
+                <circle cx="95" cy="205" r="7" fill="rgba(255,255,255,.10)"/>
+                <circle cx="205" cy="205" r="7" fill="rgba(255,255,255,.10)"/>
+
+                <!-- headlights -->
+                <path d="M57 187h22" stroke="rgba(255,255,255,.70)" stroke-width="5" stroke-linecap="round"/>
+                <path d="M201 187h22" stroke="rgba(255,255,255,.70)" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="cap">Blue sports car (fav color match)</div>
+          </div>
+        </div>
+
+        <p style="margin:14px 0 0; color:var(--muted); font-size:13px; text-align:center;">
+          ↑ This is my whole personality in three pictures!!! ↑
+        </p>
       </div>
-    </main>
+    </section>
   </div>
-
-  <script>
-    // Simple dropdown for "All About Me!!!"
-    const toggle = document.getElementById("aboutToggle");
-    const sub = document.getElementById("aboutSub");
-    const search = document.getElementById("searchInput");
-
-    function setExpanded(expanded){
-      toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-      sub.style.display = expanded ? "block" : "none";
-    }
-    setExpanded(true);
-
-    toggle.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      setExpanded(!expanded);
-    });
-    toggle.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggle.click();
-      }
-    });
-
-    // Tiny "search" that highlights matching text on the page (simple + optional)
-    let lastMark = null;
-    function clearMark(){
-      if (!lastMark) return;
-      lastMark.forEach(node => {
-        const parent = node.parentNode;
-        parent.replaceChild(document.createTextNode(node.textContent), node);
-        parent.normalize();
-      });
-      lastMark = null;
-    }
-
-    search.addEventListener("input", () => {
-      clearMark();
-      const q = search.value.trim().toLowerCase();
-      if (!q) return;
-
-      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-        acceptNode(node){
-          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-          // skip sidebar search box text nodes, scripts, styles
-          const p = node.parentElement;
-          if (!p) return NodeFilter.FILTER_REJECT;
-          const tag = p.tagName.toLowerCase();
-          if (["script","style","input"].includes(tag)) return NodeFilter.FILTER_REJECT;
-          return node.nodeValue.toLowerCase().includes(q) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-        }
-      });
-
-      lastMark = [];
-      while (walker.nextNode()) {
-        const node = walker.currentNode;
-        const text = node.nodeValue;
-        const idx = text.toLowerCase().indexOf(q);
-        if (idx === -1) continue;
-
-        const before = document.createTextNode(text.slice(0, idx));
-        const match = document.createElement("mark");
-        match.textContent = text.slice(idx, idx + q.length);
-        match.style.background = "rgba(59,130,246,.35)";
-        match.style.color = "inherit";
-        match.style.padding = "0 2px";
-        match.style.borderRadius = "6px";
-        const after = document.createTextNode(text.slice(idx + q.length));
-
-        const frag = document.createDocumentFragment();
-        frag.appendChild(before);
-        frag.appendChild(match);
-        frag.appendChild(after);
-
-        node.parentNode.replaceChild(frag, node);
-        lastMark.push(match);
-      }
-      if (lastMark && lastMark.length) lastMark[0].scrollIntoView({behavior:"smooth", block:"center"});
-    });
-  </script>
 </body>
 </html>
